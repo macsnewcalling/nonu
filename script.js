@@ -78,14 +78,15 @@ function setupReceiver() {
     }
   };
 
-  db.ref(`${callId}/offer`).on("value", async snapshot => {
+  // ✅ Fixed block: Listen for entire call object, and check if 'offer' exists
+  db.ref(`${callId}`).on("value", async snapshot => {
     const data = snapshot.val();
-    if (data) {
+    if (data && data.offer) {
       document.getElementById("status").innerText = "Incoming call...";
       document.getElementById("answerBtn").style.display = "block";
 
       document.getElementById("answerBtn").onclick = async () => {
-        const offer = new RTCSessionDescription(JSON.parse(data));
+        const offer = new RTCSessionDescription(JSON.parse(data.offer));
         await peerConn.setRemoteDescription(offer);
 
         const answer = await peerConn.createAnswer();
