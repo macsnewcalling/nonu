@@ -78,10 +78,11 @@ function setupReceiver() {
     }
   };
 
-  // ✅ Fixed block: Listen for entire call object, and check if 'offer' exists
+  // ✅ Fixed listener — listens to full object and checks for 'offer'
   db.ref(`${callId}`).on("value", async snapshot => {
     const data = snapshot.val();
     if (data && data.offer) {
+      console.log("📞 Offer received on receiver:", data.offer);
       document.getElementById("status").innerText = "Incoming call...";
       document.getElementById("answerBtn").style.display = "block";
 
