@@ -5,14 +5,15 @@ let callId = "my-call";
 
 function initFirebase() {
   const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_DOMAIN",
-    databaseURL: "YOUR_DB_URL",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_BUCKET",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyAmWBSqhsChYspp8cnPwV9E7EOnyB4jcqE",
+    authDomain: "nonu-a2b10.firebaseapp.com",
+    databaseURL: "https://nonu-a2b10-default-rtdb.firebaseio.com",
+    projectId: "nonu-a2b10",
+    storageBucket: "nonu-a2b10.firebasestorage.app",
+    messagingSenderId: "563739635078",
+    appId: "1:563739635078:web:52d355f0d9411317829007"
   };
+
   firebase.initializeApp(firebaseConfig);
   db = firebase.database();
 }
