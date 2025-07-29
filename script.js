@@ -7,7 +7,7 @@ function initFirebase() {
   const firebaseConfig = {
     apiKey: "AIzaSyAmWBSqhsChYspp8cnPwV9E7EOnyB4jcqE",
     authDomain: "nonu-a2b10.firebaseapp.com",
-    databaseURL: "https://nonu-a2b10-default-rtdb.firebaseio.com",
+    databaseURL: "https://nonu-a2b10-default-rtdb.asia-southeast1.firebasedatabase.app", // ✅ FIXED
     projectId: "nonu-a2b10",
     storageBucket: "nonu-a2b10.firebasestorage.app",
     messagingSenderId: "563739635078",
@@ -78,11 +78,10 @@ function setupReceiver() {
     }
   };
 
-  // ✅ Fixed listener — listens to full object and checks for 'offer'
   db.ref(`${callId}`).on("value", async snapshot => {
     const data = snapshot.val();
+    console.log("🔥 Data received on Page B:", data); // debug
     if (data && data.offer) {
-      console.log("📞 Offer received on receiver:", data.offer);
       document.getElementById("status").innerText = "Incoming call...";
       document.getElementById("answerBtn").style.display = "block";
 
